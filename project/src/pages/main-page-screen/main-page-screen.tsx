@@ -1,5 +1,6 @@
 import { Fragment } from 'react';
 import { FilmCard } from '../../components/film-card/film-card';
+import Logo from '../../components/logo/logo';
 
 const MAX_FILM_CARDS = 20;
 
@@ -9,17 +10,17 @@ type FilmCardDescProps = {
   releaseDate: number;
 }
 
-const getMaxFilmCards = (filmCardComponent: JSX.Element): JSX.Element[] => {
-  const arrayFilmCards = [];
+function MainPageScreen(props: FilmCardDescProps): JSX.Element {
 
-  for (let i = 0; i < MAX_FILM_CARDS; i++) {
-    arrayFilmCards.push(filmCardComponent);
-  }
+  const getMaxFilmCards = (filmCardComponent: JSX.Element): JSX.Element[] => {
+    const arrayFilmCards = [];
 
-  return arrayFilmCards;
-};
+    for (let i = 0; i < MAX_FILM_CARDS; i++) {
+      arrayFilmCards.push(filmCardComponent);
+    }
+    return arrayFilmCards;
+  };
 
-function MainPage(props: FilmCardDescProps): JSX.Element {
   return (
     <Fragment>
       <section className="film-card">
@@ -31,11 +32,7 @@ function MainPage(props: FilmCardDescProps): JSX.Element {
 
         <header className="page-header film-card__head">
           <div className="logo">
-            <a href="false" className="logo__link">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            <Logo />
           </div>
 
           <ul className="user-block">
@@ -147,4 +144,4 @@ function MainPage(props: FilmCardDescProps): JSX.Element {
   );
 }
 
-export default MainPage;
+export default MainPageScreen;
