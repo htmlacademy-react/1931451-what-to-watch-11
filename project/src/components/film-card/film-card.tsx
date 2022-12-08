@@ -1,11 +1,30 @@
-function FilmCard(): JSX.Element {
+/* eslint-disable no-console */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { AppRoute } from '../../const';
+import { Film } from '../../types/film';
+
+type FilmCardProps = {
+  film: Film;
+}
+
+function FilmCard({film}: FilmCardProps): JSX.Element {
+  const {id, name, poster} = film;
+  const [filmid, setFilmid] = useState(id);
+
+  const handleMouseEnter = () => {
+    // setFilmObj(() => film);
+    setFilmid(id);
+  };
+
   return (
-    <article className="small-film-card catalog__films-card">
+    <article onMouseEnter={handleMouseEnter} id={`${id}`} key={id} className="small-film-card catalog__films-card">
       <div className="small-film-card__image">
-        <img src="img/fantastic-beasts-the-crimes-of-grindelwald.jpg" alt="Fantastic Beasts: The Crimes of Grindelwald" width="280" height="175" />
+        <img src={poster} alt={name} width="280" height="175" />
       </div>
       <h3 className="small-film-card__title">
-        <a className="small-film-card__link" href="film-page.html">Fantastic Beasts: The Crimes of Grindelwald</a>
+        <Link className="small-film-card__link" to={AppRoute.FilmPage.replace(':id', `${id}`)}>{name}</Link>
       </h3>
     </article>
   );

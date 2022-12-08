@@ -1,26 +1,16 @@
 import { Fragment } from 'react';
-import { FilmCard } from '../../components/film-card/film-card';
-import Logo from '../../components/logo/logo';
+import { Film, Films } from '../../types/film';
+import FilmsList from '../../components/films-list/films-list';
+import Logo from '../../components/logo/logo'; //спросить
 
-const MAX_FILM_CARDS = 20;
 
-type FilmCardDescProps = {
-  name: string;
-  genre: string;
-  releaseDate: number;
+type MainPageScreenProps = {
+  film: Film;
+  films: Films;
 }
 
-function MainPageScreen(props: FilmCardDescProps): JSX.Element {
 
-  const getMaxFilmCards = (filmCardComponent: JSX.Element): JSX.Element[] => {
-    const arrayFilmCards = [];
-
-    for (let i = 0; i < MAX_FILM_CARDS; i++) {
-      arrayFilmCards.push(filmCardComponent);
-    }
-    return arrayFilmCards;
-  };
-
+function MainPageScreen({film, films}: MainPageScreenProps): JSX.Element {
   return (
     <Fragment>
       <section className="film-card">
@@ -31,9 +21,7 @@ function MainPageScreen(props: FilmCardDescProps): JSX.Element {
         <h1 className="visually-hidden">WTW</h1>
 
         <header className="page-header film-card__head">
-          <div className="logo">
-            <Logo />
-          </div>
+          <Logo />
 
           <ul className="user-block">
             <li className="user-block__item">
@@ -54,10 +42,10 @@ function MainPageScreen(props: FilmCardDescProps): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{props.name}</h2>
+              <h2 className="film-card__title">{film.name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{props.genre}</span>
-                <span className="film-card__year">{props.releaseDate}</span>
+                <span className="film-card__genre">{film.genre}</span>
+                <span className="film-card__year">{film.year}</span>
               </p>
 
               <div className="film-card__buttons">
@@ -117,9 +105,7 @@ function MainPageScreen(props: FilmCardDescProps): JSX.Element {
             </li>
           </ul>
 
-          <div className="catalog__films-list">
-            {getMaxFilmCards(<FilmCard />)}
-          </div>
+          <FilmsList films={films} />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
