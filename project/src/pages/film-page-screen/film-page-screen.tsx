@@ -1,18 +1,30 @@
+/* eslint-disable no-console */
+import { useParams } from 'react-router-dom';
 import { Fragment } from 'react';
-import { Film, Films } from '../../types/film';
 import Logo from '../../components/logo/logo';
 import FilmsList from '../../components/films-list/films-list';
+import { Films } from '../../types/film';
 
 
 type FilmPageScreenProps = {
-  film: Film;
   films: Films;
 }
 
 
-function FilmPageScreen({film, films}: FilmPageScreenProps): JSX.Element {
+function FilmPageScreen({films}: FilmPageScreenProps): JSX.Element {
+  const routeParams = useParams();
+  const routeId = Number(routeParams.id);
+
+  const getFilmObj = (filmId: number) => {
+    const filmArray = films.filter((obj) => filmId === obj.id);
+
+    return filmArray[0];
+  };
+
+  const film = getFilmObj(routeId);
   const {name, genre, year, poster } = film;
   const {ratingScore, ratingCount, director, actors, description} = film.overview;
+
 
   return (
     <Fragment>
@@ -103,7 +115,7 @@ function FilmPageScreen({film, films}: FilmPageScreenProps): JSX.Element {
 
                 <p className="film-card__director"><strong>Director: {director}</strong></p>
 
-                <p className="film-card__starring"><strong>Starring: {actors}</strong></p>
+                <p className="film-card__starring"><strong>Starring: {actors.join(', ')}</strong></p>
               </div>
             </div>
           </div>
