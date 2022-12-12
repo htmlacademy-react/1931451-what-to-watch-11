@@ -1,16 +1,15 @@
 import { Fragment } from 'react';
-import { Film, Films } from '../../types/film';
 import FilmsList from '../../components/films-list/films-list';
-import Logo from '../../components/logo/logo'; //спросить
+import Logo from '../../components/logo/logo';
+import { Films } from '../../types/film';
 
 
 type MainPageScreenProps = {
-  film: Film;
   films: Films;
 }
 
 
-function MainPageScreen({film, films}: MainPageScreenProps): JSX.Element {
+function MainPageScreen({films}: MainPageScreenProps): JSX.Element {
   return (
     <Fragment>
       <section className="film-card">
@@ -42,10 +41,10 @@ function MainPageScreen({film, films}: MainPageScreenProps): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <h2 className="film-card__title">{film.name}</h2>
+              <h2 className="film-card__title">{films[0].name}</h2>
               <p className="film-card__meta">
-                <span className="film-card__genre">{film.genre}</span>
-                <span className="film-card__year">{film.year}</span>
+                <span className="film-card__genre">{films[0].genre}</span>
+                <span className="film-card__year">{films[0].year}</span>
               </p>
 
               <div className="film-card__buttons">

@@ -38,7 +38,7 @@ export const filmsData: Films = [
     year: 2018,
     poster: 'img/fantastic-beasts-the-crimes-of-grindelwald.jpg',
     bigPoster: 'img/bg-the-grand-budapest-hotel.jpg',
-    video: 'https://upload.wikimedia.org/wikipedia/commons/transcoded/b/b3/Big_Buck_Bunny_Trailer_400p.ogv/Big_Buck_Bunny_Trailer_400p.ogv.360p.webm',
+    video: 'https://download.blender.org/durian/trailer/sintel_trailer-480p.mp4',
     overview: {
       description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Asperiores, fugit!',
       ratingScore: 8.1,
