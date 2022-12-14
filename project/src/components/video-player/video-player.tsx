@@ -29,7 +29,7 @@ function VideoPlayer({src, poster, isPlaying}: VideoPlayerProps): JSX.Element {
 
     if (isPlaying) {
       setTimeout(() => {
-        videoRef.current?.play();
+        videoRef.current?.play().catch();
       }, 1000);
 
       return;
