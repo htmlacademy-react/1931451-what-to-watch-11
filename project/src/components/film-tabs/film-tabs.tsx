@@ -19,32 +19,32 @@ function FilmTabs({film}: FilmTabsProps): JSX.Element {
   const items = [
     {
       title: 'Overview',
-      // component: <OverviewTab film={film} />
+      component: <OverviewTab film={film} />
     },
     {
       title: 'Details',
-      // component: <DetailsTab film={film} />
+      component: <DetailsTab film={film} />
     },
     {
       title: 'Reviews',
-      // component: <ReviewsTab film={film}/>
+      component: <ReviewsTab film={film}/>
     }
   ];
 
   const [activeTab, setActiveTab] = useState(items[0]);
 
-  const renderTab = () => {
-    if (activeTab === items[0]) {
-      console.log(1);
-      return <OverviewTab film={film} />;
-    }
-    if (activeTab === items[1]) {
-      return <DetailsTab film={film} />;
-    }
-    if (activeTab === items[2]) {
-      return <ReviewsTab film={film}/>;
-    }
-  };
+  // const renderTab = () => {
+  //   if (activeTab === items[0]) {
+  //     console.log(1);
+  //     return <OverviewTab film={film} />;
+  //   }
+  //   if (activeTab === items[1]) {
+  //     return <DetailsTab film={film} />;
+  //   }
+  //   if (activeTab === items[2]) {
+  //     return <ReviewsTab film={film}/>;
+  //   }
+  // };
 
   return (
     <Fragment>
@@ -69,10 +69,10 @@ function FilmTabs({film}: FilmTabsProps): JSX.Element {
         </ul>
       </nav>
 
-      {/* {activeTab && activeTab.component} */}
+      {activeTab && activeTab.component}
       {/* <OverviewTab film={film} /> */}
 
-      {renderTab()}
+      {/* {renderTab()} */}
 
     </Fragment>
   );
