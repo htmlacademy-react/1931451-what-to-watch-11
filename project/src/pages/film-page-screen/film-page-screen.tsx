@@ -1,9 +1,10 @@
 /* eslint-disable no-console */
 import { useParams } from 'react-router-dom';
 import { Fragment } from 'react';
+import { Films } from '../../types/film';
 import Logo from '../../components/logo/logo';
 import FilmsList from '../../components/films-list/films-list';
-import { Films } from '../../types/film';
+import FilmTabs from '../../components/film-tabs/film-tabs';
 
 
 type FilmPageScreenProps = {
@@ -23,7 +24,6 @@ function FilmPageScreen({films}: FilmPageScreenProps): JSX.Element {
 
   const film = getFilmObj(routeId);
   const {name, genre, year, poster } = film;
-  const {ratingScore, ratingCount, director, actors, description} = film.overview;
 
 
   return (
@@ -86,37 +86,7 @@ function FilmPageScreen({films}: FilmPageScreenProps): JSX.Element {
             </div>
 
             <div className="film-card__desc">
-              <nav className="film-nav film-card__nav">
-                <ul className="film-nav__list">
-                  <li className="film-nav__item film-nav__item--active">
-                    <a href="false" className="film-nav__link">Overview</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="false" className="film-nav__link">Details</a>
-                  </li>
-                  <li className="film-nav__item">
-                    <a href="false" className="film-nav__link">Reviews</a>
-                  </li>
-                </ul>
-              </nav>
-
-              <div className="film-rating">
-                <div className="film-rating__score">{ratingScore}</div>
-                <p className="film-rating__meta">
-                  <span className="film-rating__level">Very good</span>
-                  <span className="film-rating__count">{ratingCount} ratings</span>
-                </p>
-              </div>
-
-              <div className="film-card__text">
-                <p>{description}</p>
-
-                <p>Gustave prides himself on providing first-className service to the hotel&apos;s guests, including satisfying the sexual needs of the many elderly women who stay there. When one of Gustave&apos;s lovers dies mysteriously, Gustave finds himself the recipient of a priceless painting and the chief suspect in her murder.</p>
-
-                <p className="film-card__director"><strong>Director: {director}</strong></p>
-
-                <p className="film-card__starring"><strong>Starring: {actors.join(', ')}</strong></p>
-              </div>
+              <FilmTabs film={film} />
             </div>
           </div>
         </div>

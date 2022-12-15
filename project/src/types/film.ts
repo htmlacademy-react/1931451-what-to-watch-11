@@ -21,6 +21,7 @@ export type Film = {
   poster: string;
   bigPoster: string;
   video: string;
+  runTime: string;
   overview: FilmOverview;
   reviews: FilmReviews[];
 }
